@@ -1,0 +1,230 @@
+﻿<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>Login | LocalCart</title>
+	<link href="{%static 'css/bootstrap.min.css'%}" rel="stylesheet">
+	<link href="{%static 'css/font-awesome.min.css'%}" rel="stylesheet">
+	<link href="{%static 'css/prettyPhoto.css'%}" rel="stylesheet">
+	<link href="{%static 'css/price-range.css'%}" rel="stylesheet">
+	<link href="{%static 'css/animate.css'%}" rel="stylesheet">
+	<link href="{%static 'css/main.css'%}" rel="stylesheet">
+	<link href="{%static 'css/responsive.css'%}" rel="stylesheet">
+
+	<link rel="shortcut icon" href="{%static 'images/ico/favicon.ico'%}">
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{%static 'images/ico/apple-touch-icon-144-precomposed.png'%}">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{%static 'images/ico/apple-touch-icon-114-precomposed.png'%}">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{%static 'images/ico/apple-touch-icon-72-precomposed.png'%}">
+	<link rel="apple-touch-icon-precomposed" href="{%static 'images/ico/apple-touch-icon-57-precomposed.png'%}">
+</head><!--/head-->
+
+<body>
+	<header id="header">
+		<!--header-->
+		<div class="header_top">
+			<!--header_top-->
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="contactinfo">
+							<ul class="nav nav-pills">
+								<li><a href=""><i class="fa fa-phone"></i> +91 1234567890</a></li>
+								<li><a target="_blank" href="mailto:mail@localcart.com"><i class="fa fa-envelope"></i> customer@localcart.com</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="social-icons pull-right">
+							<ul class="nav navbar-nav">
+								<li><a target="_blank" href="https://facebook.com"><i class="fa fa-facebook"></i></a></li>
+								<li><a target="_blank" href="https://twitter.com"><i class="fa fa-twitter"></i></a></li>
+								<li><a target="_blank" href="https://linkedin.com"><i class="fa fa-linkedin"></i></a></li>
+								<li><a target="_blank" href="https://github.com/srinivasmakkena"><i class="fa fa-github"></i></a></li>
+								<li><a target="_blank" href="https://gmail.com"><i class="fa fa-google-plus"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--/header_top-->
+
+		<div class="header-middle">
+			<!--header-middle-->
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="logo pull-left">
+							<a href="/"><img src="{%static 'images/home/logo.png'%}" alt="" /></a>
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="shop-menu pull-right">
+							<ul class="nav navbar-nav">
+								{% if user.is_authenticated %}
+								<li><a href="{% url 'orders' None %}"><i class="fa fa-lock"></i> Orders</a></li>
+								<li><a href="{% url 'cart' None%}"><i class="fa fa-lock"></i> cart</a></li>
+								<li><a href="logout"><i class="fa fa-lock"></i> Logout</a></li>
+								{% else %}
+								<li><a href="login"><i class="fa fa-lock"></i> Login</a></li>
+								{% endif %}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--/header-middle-->
+
+	</header><!--/header-->
+
+	<section id="form">
+		<!--form-->
+		<div class="container">
+
+			<div class="login-form">
+				<!--login form-->
+				{% if seller %}
+				<h3 style="color:red">You cannot change these values later. choose carefully...!</h3>
+				{% endif %}
+				<h2>Select Your Location</h2>
+				<script>
+					var stateObject = {
+						"Prakasham": {
+							' Addanki ': ['Addanki', 'Bommanampadu', 'Chakrayapalem', 'Chinakothapalli', 'Dharmavaram', 'Dhenuvakonda', 'Gopalapuram', 'Gowada', 'Jarlapalem', 'Kalavakuru', 'Kotikalapudi', 'Kunkupadu', 'Manikeswaram', 'Modepalli', 'Mylavaram', 'Nagulapadu', 'Perayapalem', 'Ramayapalem', 'Sankavarappadu', 'Singarakondapalem', 'Timmayapalem', 'Uppalapadu', 'Vangapadu', 'Velamuripadu', 'Vemparala', 'Venkatapuram', 'Vipparlavaripalem'], ' Ardhaveedu ': ['Ardhaveedu', 'Ayyavaripalli', 'Bogole', 'Bollupalli', 'Donakonda', 'Gannepalli', 'Kakarla', 'Maguturu', 'Mohiddinpuram', 'Nagulavaram', 'Papinenipalli', 'Peddakandukuru', 'Rangapuram', 'Velagalapaya', 'Yachavaram'], ' Ballikurava ': ['Ambadipudi', 'Ballikurava', 'Chennupalli', 'Gorrepadu', 'Guntupalli', 'K.rajupalem', 'K.v.palem', 'Konidena', 'Kopperapadu', 'Kopperapalem', 'Kothuru', 'Kukatlapalli', 'Mallayapalem', 'Mukteswaram', 'N.b.padu', 'S.l.gudipadu', 'Uppumaguluru', 'Vallapalli', 'Velamavaripalem', 'Vemavaram', 'Vydena'], ' Bestavaripeta ': ['Akkapalli', 'Basinepalli', 'Bestavaripeta', 'Ch.obinenipalli', 'Chetticherla', 'Galijerugulla', 'J.b.k.puram', 'J.c.agrahram', 'Khajipuram', 'Konapalli', 'M.p.cheruvu', 'Mokshagundam', 'Nekunambad', 'P.b.puram', 'P.obinenipalli', 'Pandillapalli', 'Pitikayagulla', 'Pusalapadu', 'Salakalaveedu'], ' Chandra Sekhara Puram ': ['Ambavaram', 'AmbavaramKothapalli', 'Anikalapalli', 'Arivemula', 'Ayyalurivaripalle', 'Boyamadugula', 'Chandrasekhara Puram', 'Chennapanayunipalli', 'Cherlopalli', 'Chintapudi', 'D.g.peta', 'K.agraharam', 'Kambhampadu', 'Kovilampadu', 'Nallamadugula', 'Pedarajupalem', 'PeddaGollapalli', 'ullagurapalli', 'R.k.palli', 'Regulachilaka', 'Uppalapadu', 'V.bayalu', 'Venganagunta'], ' Chimakurthi ': ['Bandlamudi', 'Budawada', 'Busarapalli', 'Chandrapadu', 'Chimakurthy', 'Chinaravipadu', 'Devarapalem', 'E.v.palem', 'Gadiparthivaripalem', 'Gonugunta', 'Ilapavuluru', 'K.v.palem', 'M.v.palem', 'Manchikalapadu', 'Nekunambadu', 'Nippatlapadu', 'P.nayudupalem', 'Pallamalli', 'Pidathalapudi', 'Pulikonda', 'R.c.puram', 'R.l.puram', 'Torragudipadu', 'Yarragudipadu'], ' Chinaganjam ': ['Chinnaganjam', 'Chinthagumpalli', 'Gonasapudi', 'Kadavakuduru', 'Kothapalem', 'Motupalli', 'Munnamvaripalem', 'Neelayapalem', 'Pallepalem', 'Pedaganjam', 'R.b.palem', 'Santharavuru'], ' Chirala ': ['Chirala Municipality', 'Chirala Census Town', 'Gavinivari Palem', 'Ipuru Palem'], ' Darsi ': ['Bandiveligandla', 'Basireddypalli', 'Botlapalem', 'Chandaluru', 'Darsi', 'Devavaram', 'East', 'Chavatapalem', 'East', 'Veerayapalem', 'East', 'Venkatapuram', 'Jamukuladinne', 'Korlamadugu', 'Kothapalli', 'Lankojanapalli', 'Mareddypalli', 'Papireddypalem', 'Peda', 'Vuyyalawada', 'Pothakamuru', 'Pothavaram', 'Rajampalli', 'Ramachandrapuram', 'Samanthapudi', 'T.s.puram', 'Tanamchintala', 'Tummedalapadu', 'Venkatachalampalli', 'Yarraobanapalli'], ' Donakonda ': ['Aravallipadu', 'Bhumanapalli', 'Chandavaram', 'Donakonda', 'Gangadevipalli', 'Indlacheruvu', 'Kocherlakota', 'Mallampeta', 'Manginapudi', 'P.venkatapuram', 'Peddannapalem', 'Polepalli', 'Ramapuram', 'Rudrasamudram', 'Sangapuram', 'Tellabadu', 'Vaddipadu', 'WestLakshmipuram'], ' Dornala ': ['Chinna Dornala', 'Chinna Gudipadu', 'Dornala', 'Jammidornala', 'Katakanipalli', 'Nallaguntla', 'P.bommalapuram', 'Y.cherlopalli', 'Yadavalli'], ' Giddaluru ': ['Adimurthipalli', 'Ambavaram', 'Ghadikota', 'Giddaluru', 'Jayarampuram', 'K.s.palli', 'Kanchipalli', 'Kommunuru', 'Kongalaveedu', 'Kothakota', 'Mundlapadu', 'Narava', 'Obulapuram', 'Podalakondapalli', 'Sanjevaraopeta', 'Tamballapalli', 'Timmapuram', 'Vuyyalawada', 'Yellupalli'], ' Gudluru ': ['Adavirajupalem', 'Ammavaripalem', 'Basireddypalem', 'Chevuru', 'Chimidithapadu', 'Chinalatarapi', 'Dappalampadu', 'Darakanipadu', 'Gudepalem', 'Gudluru', 'Kothapeta', 'Mocherla', 'Mogalluru', 'Nayudupalem', 'Pajarla', 'Parakondapadu', 'Potluru', 'Puretipalli', 'Ravuru', 'Salipeta', 'Swarnajipuram', 'Venkampeta', 'Yelurupadu'], ' Hanumanthuni Padu ': ['Dasallapalli', 'Dasaripalli', 'Doddichinthala', 'Gayamvaripalli', 'H.m.padu', 'HanumanthuniPadu', 'Hanumathapuram', 'Hazeepuram', 'Kistampalli', 'Kondareddypalli', 'Kutagundla', 'Lingamgunta', 'Mahammadapuram', 'Mittapalem', 'Muppallapadu', 'Nallagandla', 'Nandanavanam', 'PedaGollapalli', 'Seetharampuram', 'Timmareddypalli', 'Ummanapalli', 'Valicherla', 'Veeraramapuram', 'Vemulapadu'], ' Inkollu ': ['Bheemavaram', 'Duddukuru', 'Gangavaram', 'Idupulapadu', 'Inkollu', 'Koniki', 'Nagandla', 'Nakkalapalem', 'Pavulur', 'Pusapadu', 'Subbareddypalem', 'Sudivaripalem', 'Vankayalapadu'], ' Janakavaram Ponguluru ': ['Alavalapadu', 'Arikatlavaripalem', 'Bhagavanrajupalem', 'Budawada', 'Bytamanjuluru', 'Chandaluru', 'Chinamallavaram', 'Jagarlamudivaripalem', 'Janakavaram', 'Kallamvaripalem', 'Kasyapuram', 'Kondamanjuluru', 'Kondamuru', 'Kotapadu', 'Muppavaram', 'Nujellapalli', 'Panguluru', 'Ramakuru', 'Renangivaram', 'T.kopperapadu', 'T.takkellapadu'], ' Kandukur ': ['Anadapuram', 'Ananthasagaram', 'Balijapalem', 'Divivaripalem', 'G.mekapallem', 'Jillellamudi', 'K.m.palem', 'Kammavaripalem', 'Kancharagunta', 'Kondikandukur', 'Kovuru', 'Machavaram', 'Mahadevapuram', 'Mopadu', 'Narisettyvaripalem', 'Oguru', 'Palukur', 'Paluru Dondapadu', 'Pandalapadu', 'Srirangarajapuram'], ' Kanigiri ': ['Baduguleru', 'Ballipalli', 'Bommireddypalli', 'Chakirala', 'Challagirigala', 'Cheerladinne', 'China', 'Alavalapadu', 'China', 'Irlapadu', 'Dirisavancha', 'Ganugapenta', 'Gosulaveedu', 'Gudipadu', 'Guravajipeta', 'Jammalamadaka', 'Kanigiri', 'Kasipuram', 'Krishnapuram', 'Machavaram', 'N.gollapalli', 'Peramgudipalli', 'Polavaram', 'Punugodu', 'Sankhavaram', 'Takkellapadu', 'Thallur', 'Tummagunta', 'Vangapadu', 'Yadavalli'], ' Karamchedu ': ['Audipudi', 'Daggubadu', 'J.b.v.palem', 'K.v.palem', 'Karamchedu', 'Kesavarappadu', 'Kunkalamarru', 'Nayuduvaripalem', 'Potinavaripalem', 'R.n.v.palem', 'Swarna', 'Swarnapalem', 'Timidithapadu', 'Yarramvaripalem'], ' Komarolu ': ['Allinagaram', 'Badinenipalli', 'Brahmanapalli', 'Chintalapalli', 'Daddawada', 'Edamakallu', 'Komarole', 'Muktapuram', 'Nallaguntla', 'Pullareddypalli', 'Rajupalem', 'Reddycherla', 'Suravaripalli', 'Taticherla'], ' Konakanamittla ': ['Batchalakurapadu', 'Chinamanagundam', 'Chinarikatla', 'Chinthagunta', 'Edurallapadu', 'Ganivanipadu', 'Garimanapenta', 'Garladinne', 'Gotlagattu', 'Irasalagundam', 'Katragunta', 'Konakanametla', 'Mangapuram', 'Munagapadu', 'Nagampalli', 'Nagarajukunta', 'Nagireddypalli', 'Pedarikatla', 'Regumanipalli', 'Salanuthala', 'Siddavaram', 'Tuvvapadu', 'Vaddimadugu', 'Vagemadugu', 'Veligandla', 'Vinjavarthipadu'], ' Kondapi ': ['Ankarlapudi', 'Chinakandlagunta', 'Chinavenkannapalem', 'Chodavaram', 'Goginenivaripalem', 'Gurrapadiya', 'Ilavara', 'K.uppalapadu', 'Kattubadipalem', 'Kondapi', 'Mittapalem', 'Mugachintala', 'Mupparajupalem', 'Muppavaram', 'Nennurupadu', 'Pedakandlagunta', 'Peridepi', 'Petluru', 'Vennuru'], ' Korisapadu ': ['Anamanamuru', 'Ballavarappadu', 'Bodduvanipalem', 'Dyvalaravuru', 'Korisapadu', 'Kurravanipalem', 'Medarametla', 'P.gudipadu', 'Pamidipadu', 'Prasangulapadu', 'Rachapudi', 'Ravinuthala', 'Thammavaram', 'Timmanapalem', 'Yerrabalem'], ' Kotha Patnam ': ['Alluru', 'Alooru', 'Ethamukkala', 'Gadepalem', 'Gamallapalem', 'Gundamala', 'K.pallepalem', 'Kothapatnam', 'Madanuru', 'Motumala', 'Padarthi', 'Rajupalem', 'Rangayapalem', 'Sankuvanigunta'], ' Kurichedu ': ['Alavalapadu', 'Avulamanda', 'Bayyavaram', 'Bodanampadu', 'Dekanakonda', 'Ganga Donakonda', 'Kalluru', 'Kurichedu', 'Namassivayapuram', 'Peddavaram', 'Potlapadu', 'West Gangavaram', 'West Kasipuram', 'West Naidupalem', 'West Veerayapalem'], ' Lingasamudram ': ['Anneboinapalli', 'Chinapavani', 'Gangapalem', 'Lingasamudram', 'Malakondarayunipalem', 'Mogilicherla', 'Mutyalampadu', 'Pentrala', 'Racheruvu', 'Rajupalem', 'Thimmareddipalem', 'Veera', 'Raghavunikota', 'Viswanadhapuram', 'Yerrareddypalem'], ' Maddipadu ': ['Annangi', 'Basavannapalem', 'Doddavaram', 'Doddavarappadu', 'Garlapadu', 'Ghadiyapudi', 'Gundlapalli', 'Inamanamelluru', 'Keerthipadu', 'Kolachanakota', 'Lingamgunta', 'Maddipadu', 'Mallavaram', 'Nagannapalem', 'Nandipadu', 'Nelaturu', 'Pedakothapalli', 'Rachavaripalem', 'Seetharampuram', 'Vellampalli', 'Yedugundlapadu'], ' Markapur ': ['Markapur Municipality', 'Akkacheruvu', 'Badekhanpeta', 'Bhupathi Palle', 'Bondala Padu', 'Chintakunta', 'Gajjala Konda', 'Goguladinne', 'Gottipadia', 'Idupur', 'Jammana Palle', 'Kolabhimunipadu', 'Malyavanthuni Padu', 'Markapur', 'Narasimha Puram', 'Nikaram Palle', 'Peda Nagulavaram', 'Peda Yachavaram', 'Rayavaram', 'Sivaram Puram', 'Thippaya Palem', 'Vemula Kota'], ' Marripudi ': ['A.r.palem', 'Ankepalli', 'Chilamkur', 'Chimata', 'Dharmavaram', 'Garlapeta', 'Gundlasamudram', 'Juvvigunta', 'Kakarla', 'Kellampalli', 'Kuchipudi', 'Marripudi', 'Narasarajupalem', 'Pannur', 'Ramayapalem', 'Ravillavaripalem', 'Regalagadda', 'Tangella', 'Vallayapalem', 'Vemavaram', 'Venkatakrishnapuram'], ' Martur ': ['Bobbepalli', 'Bollapalli', 'Chimmiribanda', 'Darsi', 'Degaramudi', 'Dronadula', 'Jonnathali', 'Kolalapudi', 'Konanki', 'Martur', 'Nagarajupalli', 'Rajugaripalem', 'Rajupalem', 'Tativaripalem', 'Valaparla'], ' Mundlamuru ': ['B.v.palem', 'Bheemavaram', 'East', 'Kambhampadu', 'Edara', 'Jammalamadaka', 'Kellampalli', 'Marella', 'Mundlamur', 'Naidupalem', 'Nuzellapalli', 'Pasupugallu', 'Peda', 'Ullagallu', 'Polavaram', 'Pulipadu', 'Purimetla', 'Sankarapuram', 'Singanapalem', 'Umamaheswarapuram', 'Vemula'], ' Naguluppala Padu ': ['Ammanabrolu', 'Ch.uppalapadu', 'Chadalawada', 'Chavatapalem', 'Chekurapadu', 'Edumudi', 'H.nidamanuru', 'K.takkellapadu', 'Kanaparthi', 'Kandlagunta', 'Kothakota', 'M.muppalla', 'Machavaram', 'Maddiralapadu', 'Mattigunta', 'N.g.padu', 'Naguluppala', 'Padu', 'Obannapalem', 'Ommevaram', 'Pothavaram', 'Raparla', 'Timmasamudram', 'Uppugunduru', 'Vinodarayunipalem'], ' Ongole ': ['Chejerla', 'Cheruvu Kommu Palem', 'Devaram Padu', 'Gudimella Padu', 'Karavadi', 'Koppolu', 'Kothamamidipalem', 'Mangaladri Puram', 'Mukthinutala Padu', 'Narasa Puram', 'Pelluru', 'Sarvereddy Palem', 'Throvagunta', 'Ulichi', 'Vengamukka Palem', 'Yerajerla'], ' Pamur ': ['Ayyanakota', 'Ayyavaripalli', 'Balijapalem', 'Bodawada', 'Botlaguduru', 'Bukkapuram', 'Chilamkur', 'Chintalapalem', 'Dadireddypalli', 'Dubagunta', 'East', 'Kattakindapalli', 'East', 'Kodigudlapadu', 'Inimerla', 'Kambaladinne', 'Kodigumpala', 'Lakshminarasapuram', 'Markondapuram', 'Mopadu', 'Narramarella', 'Nuchupoda', 'Pamur', 'Raviguntapalli', 'Vaggampalli', 'Veerabadrapuram', 'West', 'Kattakindapalli'], ' Parchur ': ['A.b.v.palem', 'Adusumalli', 'B.mandagunta', 'Bhushayapalem', 'Ch.b.palem', 'Cherukuru', 'China', 'Nandipadu', 'Chintaguntapalem', 'Devarapalli', 'East', 'Peddivaripalem', 'Edubadu', 'Garnepudi', 'Gollapudi', 'Inagallu', 'K.m.v.palem', 'Kollavaripalem', 'Kothapalem', 'Nagulapalem', 'Nuthalapadu', 'Parchur', 'Potukatla', 'Ramanayapalem', 'Tanniruvaripalem', 'Timmarajupalem', 'Upputuru', 'Veerannapalem'], ' Peda Araveedu ': ['B.cherlopalli', 'Badveedu', 'Boyadagumpala', 'Chatlamitta', 'Devarajugattu', 'Goburu', 'Gundamcherla', 'Kalanuthala', 'Kambhampadu', 'Maddalakatta', 'Peda', 'Araveedu', 'Peddaraveedu', 'Putchakayalapalli', 'Ramayapalem', 'Regumanipalli', 'S.kothapalli', 'Sanikavaram', 'Sunkesula', 'Tangiralapalli', 'Tokapalli'], ' Pedacherlo Palle ': ['Bettupalli', 'Chinavarimadugu', 'Chintagumpalli', 'Chowtagogulapalli', 'Gudevaripalem', 'Guntupalli', 'Lakshmakkapalli', 'Marella', 'Muddapadu', 'Murugummi', 'Neredupalli', 'Peda Alavalapadu', 'Pedacherlopalli', 'Pedairlapadu', 'Pothavaram', 'Talakondapadu', 'Vengalayapalli', 'Vepagumpalli'], ' Podili ': ['Akkacheruvu', 'Amudalapalli', 'Annavaram', 'Egalapadu', 'Juvvaleru', 'Kambhalapadu', 'Kuchepalli', 'Madalavaripalem', 'Mallavaram', 'Mugachintala', 'Nandipalem', 'Obulakkapalli', 'Pamulapadu', 'Podili', 'Sudanagunta', 'Talamalla', 'Thummagunta', 'Uppalapadu', 'Yeluru'], ' Ponnaluru ': ['Boganampadu', 'Chennipadu', 'Cherukur', 'Chowtapalem', 'Ippagunta', 'K.agraharam', 'Kotapadu', 'M.m.palem', 'Malepadu', 'Muppalla', 'Nagireddypalem', 'P.v.palem', 'Ponnalur', 'Pyreddipalem', 'Rajolupadu', 'Ravulakollu', 'S.b.palem', 'S.r.palem', 'Thimmapalem', 'Uppaladinne', 'Vellatur', 'Vempadu', 'Venkupalem', 'Z.mekapadu'], ' Pullalacheruvu ': ['Chapalamadugu', 'Gangavaram', 'I.t.varam', 'Kavalakuntla', 'Komarole', 'Mallapalem', 'Manepalli', 'Marrivemula', 'Mutukula', 'Nayudupalem', 'Pidikitivanipalli', 'Pullalacheruvu', 'Rachakonda', 'Sathakodu', 'Yandrapalli'], ' Racherla ': ['Akaveedu', 'Anumalapalli', 'Chinaganipalli', 'Chollaveedu', 'Gowthavaram', 'Gudimetta', 'J.p.cheruvu', 'Kaluvapalli', 'Oddulavagupalli', 'Palakaveedu', 'Racharla', 'Satyavolu', 'Somidevipalli', 'Yadavall'], ' Santhamaguluru ': ['Adavipalem', 'Bandivaripalem', 'Chavatipalem', 'Gurijepalli', 'Kamepalli', 'Kommalapadu', 'Kopparam', 'Kunduru', 'Makkenavaripalem', 'Mamillapalli', 'Minnekallu', 'Paritialavaripalem', 'Pathamaguluru', 'Pathepuram', 'Puttavaripalem', 'Sajjapuram', 'Santhamagulur', 'Tangedumalli', 'Vellalacheruvu', 'Yelchuru'], ' Santhanuthala Padu ': ['Bodduvanipalem', 'Chandrapalem', 'Chilakapadu', 'Endluru', 'Enikapadu', 'Gummalampadu', 'Guravareddypalem', 'Kamepallivaripalem', 'Konaganivaripalem', 'M.vemulapadu', 'Madduluru', 'Mangamuru', 'Mynampadu', 'P.gudipadu', 'P.takkellapadu', 'Pernametta', 'R.l.puram', 'Rudravaram', 'S.n.padu', 'Santhanuthala', 'Padu'], ' Singarayakonda ': ['Binginapalli', 'Kalikivaya', 'Kanumalla', 'Mulaguntapadu', 'Old', 'S.konda', 'Pakala', 'Sanampudi', 'Singarayakonda', 'Somarajupalli', 'Woollapalem'], ' Tallur ': ['Bellakondavaripalem', 'Boddikurapadu', 'Dosakayalapadu', 'Eastgangavaram', 'Korrapativaripalem', 'Lakkavaram', 'Madhavaram', 'Mannepalli', 'Nagambotlapalem', 'Rajanagaram', 'Ramabhadrapuram', 'Sivarampuram', 'Tallur', 'Turakapalem', 'Veluguvaripalem', 'Vitalapuram'], ' Tangutur ': ['Alakurapadu', 'Ananthavaram', 'Jammulapalem', 'Jayavaram', 'Kakuturivaripalem', 'Kanduluru', 'Karumanchi', 'Konijedu', 'M.nidamanuru', 'Mallavarappadu', 'Marlapadu', 'Ponduru', 'Surareddyaplem', 'T.nayudupalem', 'Tangutur', 'Valluru', 'Vasepallipadu', 'Velagapudi'], ' Tarlupadu ': ['Chennareddypalli', 'Ganugapenta', 'Gollapalli', 'Jagannadhapuram', 'Kalujuvvalapadu', 'Kethagudipi', 'Mangalakunta', 'Meerjapeta', 'Nagellamudupu', 'Pothalapadu', 'Ragasamudram', 'Seethanagulavaram', 'Surepalli', 'Tadivaripalli', 'Tarlupadu', 'Thummalacheruvu'], ' Tripuranthakam ': ['D.v.n.colony', 'Dupadu', 'Endurivaripalem', 'G.ummadivaram', 'Ganapavaram', 'Gollapalli', 'K.annasamudram', 'Kankanalapalli', 'Kesinenipalli', 'Lellapalli', 'Medapi', 'Miriyampalli', 'Mittapalem', 'Mudivemula', 'Nadigadda', 'Oddupalem', 'P.annasamudram', 'Rajupalem', 'Ramasamudram', 'Somepalli', 'Tripuranthakam', 'Vellamapalli', 'Viswanadhapuram'], ' Ulavapadu ': ['Atmakuru', 'Baddipudi', 'Bheemavaram', 'Chagollu', 'Chakicherla', 'Karedu', 'Krishnapuram', 'Mannetikota', 'Pedapattapupalem', 'Ramayapatnam', 'Ulavapadu', 'Veerepalli'], ' Veligandla ': ['Ballavaram', 'Chodavaram', 'Gannavaram', 'Gokulam', 'Gudipatipalli', 'Hussanpuram', 'Immadicheruvu', 'Jallapalem', 'Kankanampadu', 'Kotalapalli', 'Marapaguntla', 'Mogallur', 'Motupalli', 'Nagireddypalli', 'P.n.varam', 'P.rallapalli', 'Panduva', 'Ramagopalapuram', 'Ramalingapuram', 'Vedullacheruvu', 'Veligandla'], ' Vetapalem ': ['Akkayapalem', 'Challareddypalem', 'Desaipeta', 'Kothapeta', 'Pandillapalli', 'Papayapalem', 'Pullaripalem', 'Ramannapeta', 'Vetapalem'], ' Voletivari Palem ': ['Ammapalem', 'Ankabhupalapuram', 'Ayyavaripalli', 'Badevaripalem', 'Chundi', 'Kakutur', 'Kalavalla', 'Kondareddypalem', 'Kondasamudram', 'Lingapalem', 'Naladalapur', 'Nekunampuram', 'Nukavaram', 'Pokur', 'Polinenicheruvu', 'Polinenipalem', 'Sakhavaram', 'Sameerapalem', 'Singamanenipalli', 'Voletivaripalem'], ' Yddana Pudi ': ['Ananthavaram', 'Chimatavaripalem', 'Gannavaram', 'Jagarlamudi', 'Munnangivaripalem', 'Poluru', 'Punuru', 'Suravarapupalli', 'Syamalavaripalem', 'Tanuboddivaripalem', 'Vinjanampadu', 'WestPedivaripalem', 'Yaddanapudi', 'Yanamadala', 'YddanaPudi'], ' Yerragondapalem ': ['Amanigudipadu', 'Boyalapalli', 'Gangapalem', 'Ganjivaripalli', 'Gollavidipi', 'Gurijepalli', 'Gurrapusala', 'Kolukula', 'Mogullapalli', 'Muraripalli', 'Narasayapalem', 'Tammadapalli', 'Vadampalli', 'Veerabhadrapuram', 'Venkatadripalem', 'Yarragondapalem'], ' Zarugumilli ': ['Akkacheruvupalem', 'Chatukupadu', 'Chintalapalem', 'Chirrikurapadu', 'Davaguduru', 'K.bitragunta', 'Kamepalli', 'N.n.kandrika', 'Nandanavanam', 'Narisingolu', 'Paletipadu', 'Patchava', 'Pydipadu', 'R.c.puram', 'Reddypalem', 'Thumadu', 'Vardhinenipalem', 'Vaviletipadu', 'Yedlurupadu', 'Zarugumalli'], ' kambham ': ['Chinna kambham', 'Kambham', 'Darga', 'H.', 'gudem', 'Jangamguntla', 'Kandulapuram', 'L.kota', 'Lingapuram', 'Narsireddypalli', 'Owrangabad', 'Peddanallakalva', 'Ravipadu', 'Turimella', 'Yarrabalem']
+						}
+					}
+					window.onload = function () {
+						var countySel = document.getElementById("countySel"),
+							stateSel = document.getElementById("stateSel"),
+							districtSel = document.getElementById("districtSel");
+						for (var country in stateObject) {
+							countySel.options[countySel.options.length] = new Option(country, country);
+						}
+						countySel.onchange = function () {
+							stateSel.length = 1; // remove all options bar first
+							districtSel.length = 1; // remove all options bar first
+							if (this.selectedIndex < 1) return; // done
+							for (var state in stateObject[this.value]) {
+								stateSel.options[stateSel.options.length] = new Option(state, state);
+							}
+						}
+						countySel.onchange(); // reset in case page is reloaded
+						stateSel.onchange = function () {
+							districtSel.length = 1; // remove all options bar first
+							if (this.selectedIndex < 1) return; // done
+							var district = stateObject[countySel.value][this.value];
+							for (var i = 0; i < district.length; i++) {
+								districtSel.options[districtSel.options.length] = new Option(district[i], district[i]);
+							}
+						}
+					}
+				</script>
+				<form name="myform" id="myForm">
+
+					Select District: <select required name="District" id="countySel" size="1">
+						<option value="" selected="selected">Select Your District</option>
+					</select>
+					<br>
+					<br>
+					Select Manadal: <select required name="Mandal" id="stateSel" size="1">
+						<option value="" selected="selected">Please select District first</option>
+					</select>
+					<br>
+					<br>
+					Select City/Village: <select required name="Village" id="districtSel" size="1">
+						<option value="" selected="selected">Please select Mandal first</option>
+					</select><br>
+					{% if seller %}
+					<br />
+					Select Your Shop Category:
+					<SELECT required name="sel">
+						<option hidden disabled selected value> -- select Category	-- </option>
+						{% for i in category%}
+						<OPTION Value="{{i.name}}">{{i.name}}</OPTION>
+						{% endfor%}
+					</SELECT>
+					<br>
+					{% endif %}
+					<br><br>
+					<input type="submit">
+					<closeform></closeform>
+				</form>
+
+
+			</div><!--/sign up form-->
+		</div>
+	</section><!--/form-->
+
+	<footer id="footer">
+		<!--Footer-->
+		<div class="footer-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-2">
+						<div class="companyinfo">
+							<h2 style="color:orange"><span style="color:blue">L</span>ocal<span style="color:blue">C</span>art</h2>
+							<p>Shop From Anywhere.</p>
+							<p>Happy Shopping.</p>
+						</div>
+					</div>
+					<div class="col-sm-7">
+						<div class="col-sm-3">
+							<div class="companyinfo">
+								<h2><span style="color:black">F</span>aster <span style="color:black">D</span>eliviery.</h2>
+								<h2>24/7</h2>
+							</div>
+						</div>
+
+						<div class="col-sm-3">
+							<div class="companyinfo">
+								<h2><span style="color:black">A</span>nyone can Sell. <span style="color:black">E</span>veryone can Buy.</h2>
+							</div>
+						</div>
+
+						<div class="col-sm-3">
+							<div class="companyinfo">
+								<h2><span style="color:black">F</span>arm to Home. <span style="color:black">C</span>onnecting villages.</h2>
+							</div>
+						</div>
+
+						<div class="col-sm-3">
+							<div class="companyinfo">
+								<h2><span style="color:black">W</span>herever You Are. <span style="color:black">W</span>e are there.</h2>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="address">
+							<img src="{%static 'images/home/map.png'%}" alt="" />
+							<p></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="footer-bottom">
+			<div class="container">
+				<div class="row">
+					<p class="pull-left">Copyright © {{year}} <strong>LocalCart</strong> Inc. All rights reserved.</p>
+					<p class="pull-right">Designed by <span><strong>Alpha-Army</strong></span></p>
+				</div>
+			</div>
+		</div>
+
+	</footer><!--/Footer-->
+
+
+
+	<script src="{%static 'js/jquery.js'%}"></script>
+	<script src="{%static 'js/bootstrap.min.js'%}"></script>
+	<script src="{%static 'js/jquery.scrollUp.min.js'%}"></script>
+	<script src="{%static 'js/price-range.js'%}"></script>
+	<script src="{%static 'js/jquery.prettyPhoto.js'%}"></script>
+	<script src="{%static 'js/main.js'%}"></script>
+</body>
+</html>

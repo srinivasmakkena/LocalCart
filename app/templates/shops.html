@@ -1,0 +1,264 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    {%load static%}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Home | LocalCart</title>
+    <link href="{%static 'css/bootstrap.min.css'%}" rel="stylesheet">
+    <link href="{%static 'css/font-awesome.min.css'%}" rel="stylesheet">
+    <link href="{%static 'css/prettyPhoto.css'%}" rel="stylesheet">
+    <link href="{%static 'css/price-range.css'%}" rel="stylesheet">
+    <link href="{%static 'css/animate.css'%}" rel="stylesheet">
+    <link href="{%static 'css/main.css'%}" rel="stylesheet">
+    <link href="{%static 'css/responsive.css'%}" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="{%static 'images/ico/favicon.ico'%}">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{%static 'images/ico/apple-touch-icon-144-precomposed.png'%}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{%static 'images/ico/apple-touch-icon-114-precomposed.png'%}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{%static 'images/ico/apple-touch-icon-72-precomposed.png'%}">
+    <link rel="apple-touch-icon-precomposed" href="{%static 'images/ico/apple-touch-icon-57-precomposed.png'%}">
+</head><!--/head-->
+
+<body>
+    <header id="header">
+        <!--header-->
+        <div class="header_top">
+            <!--header_top-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="contactinfo">
+                            <ul class="nav nav-pills">
+                                <li><a href=""><i class="fa fa-phone"></i> +91 1234567890</a></li>
+                                <li><a target="_blank" href="mailto:mail@localcart.com"><i class="fa fa-envelope"></i> customer@localcart.com</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="social-icons pull-right">
+                            <ul class="nav navbar-nav">
+                                <li><a target="_blank" href="https://facebook.com"><i class="fa fa-facebook"></i></a></li>
+                                <li><a target="_blank" href="https://twitter.com"><i class="fa fa-twitter"></i></a></li>
+                                <li><a target="_blank" href="https://linkedin.com"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a target="_blank" href="https://github.com/srinivasmakkena"><i class="fa fa-github"></i></a></li>
+                                <li><a target="_blank" href="https://gmail.com"><i class="fa fa-google-plus"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--/header_top-->
+
+        <div class="header-middle">
+            <!--header-middle-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="logo pull-left">
+                            <a href="/"><img src="{%static 'images/home/logo.png'%}" alt="" /></a>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="shop-menu pull-right">
+                            <ul class="nav navbar-nav">
+
+                                {% if user.is_authenticated %}
+                                <li><a href="{% url 'location' %}"><i class="fa fa-user"></i> Location</a></li>
+                                <li><a href="{% url 'orders' None %}"><i class="fa fa-lock"></i> Orders</a></li>
+                                <li><a href="{% url 'cart' None%}"><i class="fa fa-lock"></i> cart</a></li>
+
+                                <li><a href="{% url 'logout' %}"><i class="fa fa-lock"></i> Logout</a></li>
+                                {% else %}
+                                <li><a href="{% url 'login' %}"><i class="fa fa-lock"></i> Login</a></li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--/header-middle-->
+    </header><!--/header-->
+
+
+    <section id="slider">
+        <!--slider-->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="slider-carousel" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#slider-carousel" data-slide-to="1"></li>
+                            <li data-target="#slider-carousel" data-slide-to="2"></li>
+                            <li data-target="#slider-carousel" data-slide-to="3"></li>
+                        </ol>
+
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <div class="col-sm-6">
+                                    <h1><span>L</span>ocal<span>C</span>art</h1>
+                                    <h2>Shops nearby</h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                                    <button type="button" class="btn btn-default get">Get it now</button>
+                                </div>
+                                <div class="col-sm-6">
+                                    <img src="{%static 'images/home/girl1.jpg'%}" class="girl img-responsive" alt="" />
+                                    <img src="{%static 'images/home/pricing.png'%}" class="pricing" alt="" />
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="col-sm-6">
+                                    <h1><span>L</span>ocal<span>C</span>art</h1>
+                                    <h2>Shops nearby</h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                                    <button type="button" class="btn btn-default get">Get it now</button>
+                                </div>
+                                <div class="col-sm-6">
+                                    <img src="{%static 'images/home/girl2.jpg'%}" class="girl img-responsive" alt="" />
+                                    <img src="{%static 'images/home/pricing.png'%}" class="pricing" alt="" />
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <div class="col-sm-6">
+                                    <h1><span>L</span>ocal<span>C</span>art</h1>
+                                    <h2>Shops nearby</h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                                    <button type="button" class="btn btn-default get">Get it now</button>
+                                </div>
+                                <div class="col-sm-6">
+                                    <img src="{%static 'images/home/girl3.jpg'%}" class="girl img-responsive" alt="" />
+                                    <img src="{%static 'images/home/pricing.png'%}" class="pricing" alt="" />
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="col-sm-6">
+                                    <h1><span>L</span>ocal<span>C</span>art</h1>
+                                    <h2>Shops nearby</h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                                    <button type="button" class="btn btn-default get">Get it now</button>
+                                </div>
+                                <div class="col-sm-6">
+                                    <img src="{%static 'images/home/girl2.jpg'%}" class="girl img-responsive" alt="" />
+                                    <img src="{%static 'images/home/pricing.png'%}" class="pricing" alt="" />
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                        <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section><!--/slider-->
+
+    <section>
+        <div class="container">
+            <div class="col-sm-9 padding-center">
+                <div class="features_items">
+                    <!--features_items-->
+                    <h2 class="title text-center">Products</h2>
+                    {%for i in product%}
+                    <div class="col-sm-4">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <img src="{{i.img.url}}" alt="" />
+                                    <h2>{{i.name}}</h2>
+                                    ₹{{i.price}}<p>{{i.desc}}</p>
+                                    <a href="{% url 'cart' i.name %}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Buy</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {%endfor%}
+                </div><!--features_items-->
+            </div>
+        </div>
+
+    </section>
+
+    <footer id="footer">
+        <!--Footer-->
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="companyinfo">
+                            <h2 style="color:orange"><span style="color:blue">L</span>ocal<span style="color:blue">C</span>art</h2>
+                            <p>Shop From Anywhere.</p>
+                            <p>Happy Shopping.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="col-sm-3">
+                            <div class="companyinfo">
+                                <h2><span style="color:black">F</span>aster <span style="color:black">D</span>eliviery.</h2>
+                                <h2>24/7</h2>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="companyinfo">
+                                <h2><span style="color:black">A</span>nyone can Sell. <span style="color:black">E</span>veryone can Buy.</h2>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="companyinfo">
+                                <h2><span style="color:black">F</span>arm to Home. <span style="color:black">C</span>onnecting villages.</h2>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="companyinfo">
+                                <h2><span style="color:black">W</span>herever You Are. <span style="color:black">W</span>e are there.</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="address">
+                            <img src="{%static 'images/home/map.png'%}" alt="" />
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <p class="pull-left">Copyright © {{year}} <strong>LocalCart</strong> Inc. All rights reserved.</p>
+                    <p class="pull-right">Designed by <span><strong>Alpha-Army</strong></span></p>
+                </div>
+            </div>
+        </div>
+
+    </footer><!--/Footer-->
+
+
+
+    <script src="{%static 'js/jquery.js'%}"></script>
+    <script src="{%static 'js/bootstrap.min.js'%}"></script>
+    <script src="{%static 'js/jquery.scrollUp.min.js'%}"></script>
+    <script src="{%static 'js/price-range.js'%}"></script>
+    <script src="{%static 'js/jquery.prettyPhoto.js'%}"></script>
+    <script src="{%static 'js/main.js'%}"></script>
+</body>
+</html>

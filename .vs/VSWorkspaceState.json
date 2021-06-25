@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\app",
+    "\\app\\migrations",
+    "\\app\\templates",
+    "\\app\\templates\\accounts",
+    "\\LocalCart"
+  ],
+  "SelectedNode": "\\app\\views.py",
+  "PreviewInSolutionExplorer": false
+}
